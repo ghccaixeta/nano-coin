@@ -1,0 +1,153 @@
+@media(max-width: 576px){
+    .search-page-container{
+        flex-direction: column;
+    }
+}
+
+
+a{
+    text-decoration: none;
+}
+
+.btn{
+    width: 100%;
+    margin-right: auto;
+    margin-bottom: .70rem;
+}
+
+@media(min-width: 576px){
+    .btn{
+        width: auto;
+        margin-right: .25rem;
+        margin-left: .25rem;
+    }
+    
+}
+
+th, td{
+    font-size: .875rem;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.header-container{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.controls .control-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav{
+    background-color: #fff;
+    font-size: .875rem;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #f8f9fa;
+    border-bottom-color: #f8f9fa;
+    transform: translateY(1px);
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+  }
+
+.badge-info {
+    color: #fff;
+    background-color: #17a2b8
+}
+.badge-warning {
+    color: #212529;
+    background-color: #ffc107
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #007bff;
+    
+}
+
+.badge-dark {
+    color: #fff;
+    background-color: #343a40
+}
+
+.footer-toast-success {
+    position: fixed;
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+    bottom: 0;
+    right: 0;
+    
+    /* box-shadow: .15px 10px 15px RGBA(245,194,199,1) */
+    
+    
+}
+
+.text-right{
+    text-align: right;
+}
+
+.search-page-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-group-text{
+    border-top-right-radius: 0pt;
+    border-bottom-right-radius: 0pt;
+    
+}
+
+.breadcrumb-item{
+    font-size: .875rem;
+}
+
+.btn-custom {
+    
+ display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }

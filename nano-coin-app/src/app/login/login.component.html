@@ -1,0 +1,44 @@
+<div id="layoutAuthentication" style="background-color: #282a36;">
+    <div id="layoutAuthentication_content" style="background-color: #282a36;">
+        <main class="login-container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-3">
+                        <div class=" border-0 rounded-lg mt-5">
+                            <div class="card-header text-center" style="background-color: #282a36;"><img class="img-fluid nav-image" src="../../../../assets/nano.png" alt=""></div>
+                            <div class="card-body mt-4">
+                                <form class="needs-validation" #loginForm="ngForm">
+                                    <div class="form-floating mb-3">
+                            
+                                        <input class="form-control" id="username" name="username" type="text" placeholder="Usuário" [(ngModel)]="login.login" [ngModelOptions]="{standalone: true}" required />
+                                        <label for="username">Usuário</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                            
+                                        <input class="form-control" id="password" name="password" type="password" placeholder="Senha" [(ngModel)]="login.senha" [ngModelOptions]="{standalone: true}" required />
+                                        <label for="username">Senha</label>
+                                    </div>
+                                    <div class="d-grid gap-2">
+
+                                        <button (click)="onSubmit()" class="btn btn-primary btn-lg showtoast" type="submit">
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoading"></span>
+                                            Login
+                                        </button>
+                                    </div>
+                                
+                                </form>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <ngb-toast class="footer-toast-danger m-4" *ngIf="error" header="" [autohide]="true" (hidden)="show=false">
+        <div>
+            <p><i class="fa-solid fa-triangle-exclamation"></i>&nbsp;Erro ao realizar login!</p>
+            <p>{{messageError}}</p>
+            
+        </div>
+    </ngb-toast>

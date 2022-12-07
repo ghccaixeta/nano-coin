@@ -1,0 +1,93 @@
+<div class="header-container pb-4">
+    <div class="d-flex justify-content-between align-items-center px-4">
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item"><a routerLink="/movimentacao">Movimentações</a></li>
+            <li class="breadcrumb-item active">Adicionar movimentação/li>
+        </ol>
+    </div>
+    <div class="title-container px-4">
+        <div>
+            <h2>Adicionar movimentação</h2>
+        </div>
+        
+    </div>
+</div>
+<ul class="nav nav-tabs px-4" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="create-tab" data-toggle="tab" role="tab" aria-controls="create" aria-selected="true">Criar</a>
+    </li>
+    
+</ul>
+<div class="container-fluid tab-content">
+    <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="home-tab">
+        <form class="needs-validation" #movimentacaoForm="ngForm">
+          
+            <div class="row justify-content-center">
+
+                <div class="col-md-6 mb-4">
+                    <label for="name" class="form-label"><strong>Funcionário *</strong></label>
+                    <div class="input-group">
+                    <select class="form-select" id="inputGroupSelect04" [(ngModel)]="movimentacao.funcionario_id" [ngModelOptions]="{standalone: true}" required>
+                        <option class="h6" *ngFor="let funcionario of funcionarios" [ngValue]="funcionario.id">{{funcionario.nome_completo}}</option>
+                    </select>
+                    <button class="btn-group btn-group-secondary" (click)="getFuncionarios()" [disabled]="reloadSpinner">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="reloadSpinner"></span>
+                        <span *ngIf="!reloadSpinner"><i class="fa-solid fa-arrows-rotate"></i></span>
+                    </button>
+                    </div>
+                </div>
+            </div>
+            
+             
+            <div class="row justify-content-center">
+
+                <div class="col-md-6 mb-4">
+                    <label for="name" class="form-label"><strong>Tipo Movimentação *</strong></label>
+                    <select class="form-select" id="inputGroupSelect04" [(ngModel)]="movimentacao.tipo_movimentacao" [ngModelOptions]="{standalone: true}" required>
+                    <option hidden></option>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                    </select>
+                    
+                </div>
+            </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+              <label for="valor" class="form-label"><strong>Valor *</strong></label>
+              <input placeholder="Valor" type="text" mask="separator.2" [(ngModel)]="movimentacao.valor" [ngModelOptions]="{standalone: true}" class="form-control" id="valor" aria-describedby="emailHelp" required pattern="\S+.*"/>
+               
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+              <label for="observacao" class="form-label"><strong>Observação *</strong></label>
+              <input placeholder="Observação" type="text" [(ngModel)]="movimentacao.observacao" [ngModelOptions]="{standalone: true}" class="form-control" id="observacao" aria-describedby="emailHelp" required pattern="\S+.*"/>
+               
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <button (click)="onSubmit('save')" type="submit" class="btn btn-success showtoast" style="float: right; margin-right: 0;" [disabled]="btnDisabled">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="saveSpinner"></span>
+              Criar
+            </button>
+            <button (click)="onSubmit('saveAdd')" type="submit" class="btn btn-primary showtoast" style="float: right" [disabled]="btnDisabled">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="saveNewSpinner"></span>
+              Criar & Adicionar Nova
+            </button>  
+            <button type="button" routerLink="/movimentacao" class="btn btn-danger" style="float: right" [disabled]="btnDisabled">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+  <ngb-toast class="footer-toast-danger m-4" *ngIf="isEmpty || errors" header="" [autohide]="true" (hidden)="show=false">
+    <i class="fa-solid fa-triangle-exclamation"></i> Erro ao criar movimentação!
+    </ngb-toast>
+  <ngb-toast class="footer-toast-success m-4" *ngIf="pSuccess" header="" [autohide]="true" (hidden)="show=false">
+    <div><i class="fa-solid fa-check"></i> Movimentação criada!</div>
+  </ngb-toast>

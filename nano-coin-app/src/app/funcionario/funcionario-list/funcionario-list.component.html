@@ -1,0 +1,113 @@
+<div class="header-container pb-4 d-flex">
+    <div class="d-flex title-container px-4 mt-4">
+        <div>
+            <h2>Funcionários
+               <!-- <span class="badge badge-dark d-print-none" *ngIf="year.toString().length == 4">{{year}}</span> -->
+               
+            </h2>
+        </div>
+        <div class="controls">
+            <div class="control-group">
+                <button class="btn btn-success btn-sm d-print-none" routerLink="/funcionario/add"><i class="fa fa-plus"></i>&nbsp;Adicionar</button>
+            </div>
+            <div class="control-group">
+            </div>
+        </div>
+        
+    </div>
+  </div>
+  
+  <div>
+<ul class="nav nav-tabs px-4" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="create-tab" data-toggle="tab" role="tab" aria-controls="create" aria-selected="true">Resultados</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="expense-tab-pane" role="tabpanel" aria-labelledby="expense-tab" tabindex="0">
+        <div class="container-fluid px-4">
+            <div class="col col-md-12">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <div class="container-fluid px-4 mt-4">
+                          
+                          <form class="d-print-none">
+                            <div class="row justify-content-left">
+                     
+                               <div class="col-md-3 order-md-1 mb-4">
+                                 <label for="name" class="form-label"><strong>Funcionário</strong></label>
+                                 <input placeholder="Nome Funcionário" type="text" class="form-control" id="name" aria-describedby="emailHelp" [(ngModel)]="filtro.nome_completo" [ngModelOptions]="{standalone: true}" pattern="\S+.*"/>
+                                  
+                               </div>
+                               <div class="col-md-3 order-md-1 mb-4">
+                                   <label for="name" class="form-label"><strong>Data Inicial</strong></label>
+                                   <input placeholder="Descrição" type="date" class="form-control" id="name" [(ngModel)]="filtro.data_inicial" [ngModelOptions]="{standalone: true}" />
+                                    
+                               </div>
+                               <div class="col-md-3 order-md-1 mb-4">
+                                 <label for="name" class="form-label"><strong>Data Final</strong></label>
+                                 <input placeholder="Descrição" type="date" class="form-control" id="name" [(ngModel)]="filtro.data_final" [ngModelOptions]="{standalone: true}" />
+                                   
+                               </div>
+                               
+                               
+                            </div>
+                            <div class="row justify-content-rigth">
+                               <div class="col-md-6">
+                                   <button type="submit" class="btn btn-primary" (click)="paginate()"><i class="fa-solid fa-filter"></i> Filtrar</button>
+                                   <button type="reset" class="btn btn-outline-danger" (click)="limparFiltro()" ><i class="fa-solid fa-filter-circle-xmark"></i> Limpar</button>
+                               </div>
+                            </div>
+                            
+                       </form>
+                            <div class="table-responsive">
+
+                                <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                            <th><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoadging"></span>ID</th>
+                                            <th><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoadging"></span>Nome</th>
+                                            <th class="text-left"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoadging"></span>Saldo</th>
+                                            <th class="text-left"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoadging"></span>Data de Criação</th>
+                                            <th class="text-left"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoadging"></span></th>
+                                            
+                                      </tr>
+                              
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let funcionario of funcionarios">
+                                        <td class="text-left align-middle">{{funcionario.id}}</td>
+                                        <td class="align-middle"><a href="#" routerLink='/funcionario/{{funcionario.id}}'>{{funcionario.nome_completo}}</a></td>
+                                        <td class="text-left align-middle {{funcionario.saldo_atual < 0 ? 'text-danger' : 'text-dark'}}">{{funcionario.saldo_atual | currency:'BRL':''}}</td>
+                                        <td class="text-left align-middle">{{funcionario.createdAt | date:'dd/MM/yyy'}}</td>
+                                        <td class="text-right align-middle"><button class="btn btn-outline-dark" routerLink="/funcionario/extrato/{{funcionario.id}}" [disabled]="!funcionario.saldo_atual"><i class="fa-solid fa-file-invoice-dollar"></i></button></td>
+                                        
+                                        
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination pb-3">
+                        
+                              <ngb-pagination (pageChange)="getfuncionarios($event)" ngClass="d-print-none" [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [boundaryLinks]="false"
+                              [pageSize]="pageSize" class="d-flex justify-content-left"></ngb-pagination>
+                              <select class="form-select d-print-none" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="getfuncionarios(1)">
+                                <option [ngValue]="10">10 itens por página</option>
+                                <option [ngValue]="20">20 itens por página</option>
+                                <option [ngValue]="50">50 itens por página</option>
+                                <option [ngValue]="100">100 itens por página</option>
+                              </select>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="changelog-tab-pane" role="tabpanel" aria-labelledby="changelog-tab" tabindex="0">
+        
+    </div>
+  </div>
+  <ngb-toast class="footer-toast-success m-4" *ngIf="successDelete" header="" [autohide]="true">
+    <div><i class="fa-solid fa-check"></i> Funcionário <span class="h6">{{funcionarioDeleteName}}</span> deletado com sucesso!</div>
+  </ngb-toast>

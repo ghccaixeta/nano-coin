@@ -1,0 +1,64 @@
+<div class="header-container pb-4">
+    <div class="d-flex justify-content-between align-items-center px-4">
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item"><a routerLink="/funcionario">Funcionários</a></li>
+            <li class="breadcrumb-item active">Editar funcionário</li>
+        </ol>
+    </div>
+    <div class="title-container px-4">
+        <div>
+            <h2>Editar funcionário</h2>
+        </div>
+        
+    </div>
+</div>
+<ul class="nav nav-tabs px-4" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="create-tab" data-toggle="tab" role="tab" aria-controls="create" aria-selected="true">Editar</a>
+    </li>
+    
+</ul>
+<div class="container-fluid tab-content">
+    <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="home-tab">
+      <form class="needs-validation" #funcionarioForm="ngForm">
+        <div class="row justify-content-center">
+          <div class="col-md-6 mb-4">
+            <label for="name" class="form-label"><strong>Nome Completo *</strong></label>
+            <input placeholder="Nome Completo" type="text" [(ngModel)]="funcionario.nome_completo" [ngModelOptions]="{standalone: true}" class="form-control" id="name" aria-describedby="emailHelp" required pattern="\S+.*"/>
+             
+          </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+              <label for="login" class="form-label"><strong>Login *</strong></label>
+              <input placeholder="Login" type="text" [(ngModel)]="funcionario.login" [ngModelOptions]="{standalone: true}" class="form-control" id="login" aria-describedby="emailHelp" required pattern="\S+.*"/>
+               
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+              <label for="senha" class="form-label"><strong>Senha *</strong></label>
+              <input placeholder="********" type="password" [(ngModel)]="funcionario.senha" [ngModelOptions]="{standalone: true}" class="form-control" id="login" aria-describedby="emailHelp" required pattern="\S+.*"/>
+               
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <button (click)="onSubmit()" type="submit" class="btn btn-success showtoast" style="float: right; margin-right: 0;" [disabled]="btnDisabled">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="btnDisabled"></span>
+                Atualizar
+            </button>
+            <button type="button" routerLink="/funcionario" class="btn btn-danger" style="float: right" [disabled]="btnDisabled">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+<ngb-toast class="footer-toast-danger m-4" *ngIf="isEmpty || errors" header="" [autohide]="true" (hidden)="show=false">
+    <i class="fa-solid fa-triangle-exclamation"></i> Erro ao editar funcionário!
+    <p class="mt-3">{{errors}}</p>
+</ngb-toast>
+

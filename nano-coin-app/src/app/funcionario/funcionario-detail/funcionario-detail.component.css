@@ -1,0 +1,122 @@
+.btn{
+    width: auto;
+    margin-left: .30rem;
+    
+}
+
+.header-container{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+}
+
+.object-subtitle{
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.title-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.controls .control-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.separator{
+    margin-left: .2rem;
+    margin-right: .2rem;
+}
+
+@media(max-width: 576px){
+    .separator{
+        display: none;
+    }
+    .title-container{
+        flex-direction: column;
+    }
+    .controls .control-group{
+        justify-content: flex-start;
+        margin-top: 0.8rem;
+    }
+    
+    .subtitle{
+        display: block;
+    }
+}
+
+
+td{
+    font-size: 14px;
+}
+
+.teste{
+    background-color: red;
+    height: 100%;
+}
+
+.nav{
+    background-color: #fff;
+    font-size: .875rem;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #f8f9fa;
+    border-bottom-color: #f8f9fa;
+    transform: translateY(1px);
+}
+
+.card{
+        box-shadow: 0 0.125rem 0.25rem #00000013;
+}
+
+.card .card-header {
+    background-color: #fff;
+    border-bottom: none;
+    padding-bottom: 0;
+    
+}
+
+.modal-text-delete{
+    color: #dc3545;
+    font-weight: bolder;
+}
+
+.footer-toast-success {
+    position: absolute;
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+    bottom: 0;
+    right: 0;
+    
+    /* box-shadow: .15px 10px 15px RGBA(245,194,199,1) */
+    
+    
+}
+
+.footer-toast-danger {
+    position: absolute;
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    bottom: 0;
+    right: 0;
+    
+    /* box-shadow: .15px 10px 15px RGBA(245,194,199,1) */
+    
+    
+}
+
+.breadcrumb-item{
+    font-size: .875rem;
+}
