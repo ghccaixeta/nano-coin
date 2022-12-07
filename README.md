@@ -21,7 +21,7 @@ Sistema para gestão de usuários e suas movimentações financeiras.
 
 Definir os parâmetros de conexão com o banco de dados em **nano-coin-api/db/config/config.json**
 
-```conf
+```json
   "production": {
     "username": "db_username",
     "password": "password",
