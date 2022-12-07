@@ -19,7 +19,7 @@ Sistema para gestão de usuários e suas movimentações financeiras.
 **Usuário**: admin **Senha**: admin
 ## Migrate
 
-Definir os parâmtros de conexão com o banco de dados em **nano-coin-api/db/config/config.json**
+Definir os parâmetros de conexão com o banco de dados em **nano-coin-api/db/config/config.json**
 
 
 ```bash
