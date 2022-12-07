@@ -87,7 +87,7 @@ Para fazer o deploy do App execute
   ng build
 ```
 
-Os arquivos ficaram disponíveis em **nano-coin-app/dist** e prontos a serem enviados ao servidor web.
+Os arquivos ficarão disponíveis em **nano-coin-app/dist** e prontos a serem enviados ao servidor web.
 
 ## Configuração servidor web
 
